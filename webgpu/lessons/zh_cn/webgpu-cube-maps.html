@@ -413,7 +413,7 @@ struct VSOutput {
     },
   });
 </pre>
-<p>在片段着色器中，我们需要使用 <code class="notranslate" translate="no">texture_cube</code> 而不是 <code class="notranslate" translate="no">texture_2d</code>，并且与 <code class="notranslate" translate="no">texture_cube</code> 一起使用时，<code class="notranslate" translate="no">textureSample</code> 接受一个 <code class="notranslate" translate="no">vec3f</code> 方向，因此我们传递法线。由于法线是一个阶段间变量，会被插值，所以我们需要对其进行法线化。</p>
+<p>在片段着色器中，我们需要使用 <code class="notranslate" translate="no">texture_cube</code> 而不是 <code class="notranslate" translate="no">texture_2d</code>，并且与 <code class="notranslate" translate="no">texture_cube</code> 一起使用时，<code class="notranslate" translate="no">textureSample</code> 接受一个 <code class="notranslate" translate="no">vec3f</code> 方向，因此我们传递法线。由于法线是一个阶段间变量，会被插值，所以我们需要对其进行归一化。</p>
 <pre class="prettyprint showlinemods notranslate lang-wgsl" translate="no">@group(0) @binding(0) var&lt;uniform&gt; uni: Uniforms;
 @group(0) @binding(1) var ourSampler: sampler;
 -@group(0) @binding(2) var ourTexture: texture_2d&lt;f32&gt;;
@@ -542,7 +542,7 @@ struct VSOutput {
 *            layout: pipeline.getBindGroupLayout(0),
 *            entries: [
 *              { binding: 0, resource: sampler },
--              { binding: 1, resource: texture.createView({baseMipLevel, mipLevelCount: 1}) },
+-              { binding: 1, resource: texture.createView({baseMipLevel-1, mipLevelCount: 1}) },
 +              {
 +                binding: 1,
 +                resource: texture.createView({
@@ -671,8 +671,8 @@ struct VSOutput {
 <li><a href="/webgpu/lessons/zh_cn/webgpu-importing-textures.html">加载图像</a></li>
 <li><a href="/webgpu/lessons/zh_cn/webgpu-textures-external-video.html">高效使用视频</a></li>
 <li><a href="/webgpu/lessons/zh_cn/webgpu-cube-maps.html">立方体贴图</a></li>
-<li><a href="/webgpu/lessons/zh_cn/webgpu-storage-textures.html">Storage Textures</a></li>
-<li><a href="/webgpu/lessons/zh_cn/webgpu-multisampling.html">Multisampling / MSAA</a></li>
+<li><a href="/webgpu/lessons/zh_cn/webgpu-storage-textures.html">存储纹理</a></li>
+<li><a href="/webgpu/lessons/zh_cn/webgpu-multisampling.html">多重采样 / MSAA</a></li>
         </ul>
 <li><a href="/webgpu/lessons/zh_cn/webgpu-constants.html">常量</a></li>
 <li><a href="/webgpu/lessons/zh_cn/webgpu-memory-layout.html">数据内存布局</a></li>
