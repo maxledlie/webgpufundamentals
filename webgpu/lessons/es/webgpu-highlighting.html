@@ -1,22 +1,22 @@
-<!DOCTYPE html><!-- this file is auto-generated from webgpu/lessons/es/langinfo.hanson. Do not edited directly --><!--
-Copyright 2020, Gregg Tavares
+<!DOCTYPE html><!-- this file is auto-generated from webgpu/lessons/es/webgpu-highlighting.md. Do not edited directly --><!--
+Copyright 2023, GfxFundamentals Contributors
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
 
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
+* Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
 
-    * Redistributions in binary form must reproduce the above
-      copyright notice, this list of conditions and the following disclaimer
-      in the documentation and/or other materials provided with the
-      distribution.
+* Redistributions in binary form must reproduce the above
+  copyright notice, this list of conditions and the following disclaimer
+  in the documentation and/or other materials provided with the
+  distribution.
 
-    * Neither the name of Gregg Tavares nor the names of the
-      contributors may be used to endorse or promote products derived from
-      this software without specific prior written permission.
+* Neither the name of GfxFundamentals nor the names of the
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -29,27 +29,72 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
 --><html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGPU Highlighting">
+
+<meta name="description" content="Resaltado de objetos seleccionados">
+<meta name="keywords" content="webgpu graphics">
+<meta name="thumbnail" content="https://webgpufundamentals.org/webgpu/lessons/screenshots/webgpu-highlighting_es.jpg">
+
+<meta property="og:title" content="WebGPU: Resaltado">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://webgpufundamentals.org/webgpu/lessons/resources/webgpufundamentals.jpg">
-<meta property="og:description" content="Highlighting Selected Objects">
+<meta property="og:image" content="https://webgpufundamentals.org/webgpu/lessons/screenshots/webgpu-highlighting_es.jpg">
+<meta property="og:description" content="Resaltado de objetos seleccionados">
 <meta property="og:url" content="https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@greggman">
 <meta name="twitter:creator" content="@greggman">
 <meta name="twitter:domain" content="webgpufundamentals.org">
-<meta name="twitter:title" content="WebGPU Highlighting">
+<meta name="twitter:title" content="WebGPU: Resaltado">
 <meta name="twitter:url" content="https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html">
-<meta name="twitter:description" content="Highlighting Selected Objects">
-<meta name="twitter:image:src" content="https://webgpufundamentals.org/webgpu/lessons/resources/webgpufundamentals.jpg">
+<meta name="twitter:description" content="Resaltado de objetos seleccionados">
+<meta name="twitter:image:src" content="https://webgpufundamentals.org/webgpu/lessons/screenshots/webgpu-highlighting_es.jpg">
 
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgpufundamentals.org/#website",
+      "url":"https://webgpufundamentals.org/",
+      "name":"webgpufundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html#primaryimage",
+      "url":"https://webgpufundamentals.org/webgpu/lessons/screenshots/webgpu-highlighting_es.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html#webpage",
+      "url":"https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html",
+      "inLanguage":"es",
+      "name":"WebGPU: Resaltado",
+      "keywords":"webgpu graphics programming",
+      "isPartOf":{
+        "@id":"https://webgpufundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgpufundamentals.org/webgpu/lessons/es/webgpu-highlighting.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
-<title>WebGPU Highlighting</title>
+<title>WebGPU: Resaltado</title>
 <link href="/webgpu/lessons/resources/webgpufundamentals-icon.png" rel="shortcut icon" type="image/png">
+<link rel="apple-touch-icon" href="/webgpu/lessons/resources/webgpufundamentals-icon.png">
+<link rel="icon" href="/webgpu/lessons/resources/webgpufundamentals-icon.png">
+
+<link rel="stylesheet" href="/webgpu/lessons/lang.css">
 <link rel="stylesheet" href="/webgpu/lessons/resources/lesson.css">
 </head>
 <body>
@@ -57,7 +102,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <div>
     <select class="language">
     <option value="/webgpu/lessons/webgpu-highlighting.html">English
-    </option><option value="/webgpu/lessons/es/webgpu-highlighting.html" selected="">Spanish
+    </option><option value="/webgpu/lessons/es/webgpu-highlighting.html" selected="">Español
     </option><option value="/webgpu/lessons/ja/webgpu-highlighting.html">日本語
     </option><option value="/webgpu/lessons/ko/webgpu-highlighting.html">한국어
     </option><option value="/webgpu/lessons/ru/webgpu-highlighting.html">Русский
@@ -182,19 +227,435 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <div class="container">
   <div class="lesson-title">
-    <h1>WebGPU Highlighting</h1>
+    <h1>WebGPU: Resaltado</h1>
+  </div>
+  <div id="need-newer-webgpu" style="display: none">
+    <div>This browser is missing a few WebGPU features. Please update your browser.</div>
   </div>
   <div class="lesson">
     <div class="lesson-main">
-      <p>Lo sentimos, este artículo aún no ha sido traducido.</p>
-<p><a href="https://github.com/webgpu/webgpufundamentals">Cualquier ayuda con la traducción es bien recibida</a>! 😄</p>
-<p><a href="/webgpu/lessons/webgpu-highlighting.html">Aquí está el artículo original en inglés por ahora</a>.</p>
+      <p>Este artículo es el primero de una breve serie sobre cómo crear partes de un editor 3D. Cada uno se basa en la lección anterior, por lo que te resultará más fácil entenderlos si los lees en orden.
+Estos artículos asumen que ya has leído <a href="webgpu-scene-graphs.html">el artículo sobre grafos de escena (scene graphs)</a> así como <a href="webgpu-post-processing.html">el artículo sobre post-procesamiento (post processing)</a>.</p>
+<ol>
+<li><a href="webgpu-highlighting.html">Resaltado</a> ⬅ estás aquí</li>
+<li><a href="webgpu-camera-controls.html">Controles de cámara</a></li>
+<li><a href="webgpu-picking.html">Picking (Selección)</a></li>
+</ol>
+<p>Supongamos que queremos hacer una especie de editor 3D sencillo inspirado en Blender, Maya, Unity o Unreal. Queremos algo que nos permita seleccionar y manipular objetos en 3D. Empezamos este camino en <a href="webgpu-scene-graphs.html">el artículo sobre grafos de escena</a>, donde teníamos nodos y podíamos seleccionar uno mediante botones en la interfaz de usuario para editar su traslación, rotación y escala. Sería estupendo si pudiéramos ver visualmente cuál está seleccionado. Hagamos eso.</p>
+<p>Partiendo del <a href="webgpu-scene-graphs.html#a-gui">ejemplo donde añadimos por primera vez la capacidad de seleccionar nodos</a>, comenzamos con una escena como esta:</p>
+<div class="webgpu_center center">
+  <div data-diagram="standardPass" style="width: 600px"></div>
+</div>
+<p>Para resaltar lo seleccionado, podríamos renderizar solo lo que está seleccionado en una textura separada.</p>
+<div class="webgpu_center center">
+  <div data-diagram="selectedPass" style="width: 600px"></div>
+</div>
+<p>Los valores alfa formarían efectivamente una silueta de los objetos seleccionados.</p>
+<div class="webgpu_center center">
+  <div data-diagram="alpha" style="width: 600px"></div>
+</div>
+<p>Luego podríamos usar esa máscara alfa como entrada para un paso tipo post-procesamiento donde dibujamos el color de resaltado si el alfa de la máscara es 0 pero hay un valor distinto de cero cerca. Esto nos daría efectivamente un contorno (outline).</p>
+<div class="webgpu_center center">
+  <div data-diagram="outline" style="width: 600px"></div>
+</div>
+<p>Aquí hay un shader tipo post-procesamiento que, dada la máscara alfa, dibujará un contorno:</p>
+<pre class="prettyprint showlinemods notranslate lang-wgsl" translate="no">struct VSOutput {
+  @builtin(position) position: vec4f,
+  @location(0) texcoord: vec2f,
+};
+
+@vertex fn vs(
+  @builtin(vertex_index) vertexIndex : u32,
+) -&gt; VSOutput {
+  var pos = array(
+    vec2f(-1.0, -1.0),
+    vec2f(-1.0,  3.0),
+    vec2f( 3.0, -1.0),
+  );
+
+  var vsOutput: VSOutput;
+  let xy = pos[vertexIndex];
+  vsOutput.position = vec4f(xy, 0.0, 1.0);
+  vsOutput.texcoord = xy * vec2f(0.5, -0.5) + vec2f(0.5);
+  return vsOutput;
+}
+
+@group(0) @binding(0) var mask: texture_2d&lt;f32&gt;;
+
+fn isOnEdge(pos: vec2i) -&gt; bool {
+  // Note: we need to make sure we don't use texel coords out of bounds
+  // with textureLoad as that returns different results on different GPUs
+  let size = vec2i(textureDimensions(mask, 0));
+  let start = max(pos - 2, vec2i(0));
+  let end = min(pos + 2, size);
+
+  for (var y = start.y; y &lt;= end.y; y++) {
+    for (var x = start.x; x &lt;= end.x; x++) {
+      let s = textureLoad(mask, vec2i(x, y), 0).a;
+      if (s &gt; 0) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+@fragment fn fs2d(fsInput: VSOutput) -&gt; @location(0) vec4f {
+  let pos = vec2i(fsInput.position.xy);
+
+  // Get the current texel.
+  // If it's not 0 we are inside the selected objects
+  let s = textureLoad(mask, pos, 0).a;
+  if (s &gt; 0) {
+    discard;
+  }
+
+  let hit = isOnEdge(pos);
+  if (!hit) {
+    discard;
+  }
+  return vec4f(1, 0.5, 0, 1); // naranja
+}
+</pre>
+<p>El shader primero comprueba si el píxel en la máscara es &gt; 0. Si lo es, entonces está dentro de la máscara que representa los objetos seleccionados, por lo que no queremos dibujar nada y ejecutamos <code class="notranslate" translate="no">discard</code>.</p>
+<p>De lo contrario, llama a <code class="notranslate" translate="no">isOnEdge</code> para comprobar los píxeles vecinos. Si ninguno de ellos es &gt; 0, entonces no es el borde y no dibujamos nada mediante <code class="notranslate" translate="no">discard</code>.</p>
+<p>En caso contrario, estamos en un borde y dibujamos en naranja.</p>
+<p>Ahora que tenemos un shader, necesitamos el código de configuración de post-procesamiento del <a href="webgpu-post-processing.html">artículo sobre post-procesamiento</a>.</p>
+<pre class="prettyprint showlinemods notranslate lang-js" translate="no">  const postProcessModule = device.createShaderModule({
+    code: /* wgsl */ `
+      struct VSOutput {
+        @builtin(position) position: vec4f,
+        @location(0) texcoord: vec2f,
+      };
+
+      @vertex fn vs(
+        @builtin(vertex_index) vertexIndex : u32,
+      ) -&gt; VSOutput {
+        var pos = array(
+          vec2f(-1.0, -1.0),
+          vec2f(-1.0,  3.0),
+          vec2f( 3.0, -1.0),
+        );
+
+        var vsOutput: VSOutput;
+        let xy = pos[vertexIndex];
+        vsOutput.position = vec4f(xy, 0.0, 1.0);
+        vsOutput.texcoord = xy * vec2f(0.5, -0.5) + vec2f(0.5);
+        return vsOutput;
+      }
+
+      @group(0) @binding(0) var mask: texture_2d&lt;f32&gt;;
+
+      fn isOnEdge(pos: vec2i) -&gt; bool {
+        // Note: we need to make sure we don't use texel coords out of bounds
+        // with textureLoad as that returns different results on different GPUs
+        let size = vec2i(textureDimensions(mask, 0));
+        let start = max(pos - 2, vec2i(0));
+        let end = min(pos + 2, size);
+
+        for (var y = start.y; y &lt;= end.y; y++) {
+          for (var x = start.x; x &lt;= end.x; x++) {
+            let s = textureLoad(mask, vec2i(x, y), 0).a;
+            if (s &gt; 0) {
+              return true;
+            }
+          }
+        }
+        return false;
+      };
+
+      @fragment fn fs2d(fsInput: VSOutput) -&gt; @location(0) vec4f {
+        let pos = vec2i(fsInput.position.xy);
+
+        // Get the current texel. If it's not 0 we are inside the selected objects
+        let s = textureLoad(mask, pos, 0).a;
+        if (s &gt; 0) {
+          discard;
+        }
+
+        let hit = isOnEdge(pos);
+        if (!hit) {
+          discard;
+        }
+        return vec4f(1, 0.5, 0, 1);
+      }
+    `,
+  });
+
+  const postProcessPipeline = device.createRenderPipeline({
+    layout: 'auto',
+    vertex: { module: postProcessModule },
+    fragment: {
+      module: postProcessModule,
+      targets: [ { format: presentationFormat }],
+    },
+  });
+
+-  const postProcessSampler = device.createSampler({
+-    minFilter: 'linear',
+-    magFilter: 'linear',
+-  });
+
+  const postProcessRenderPassDescriptor = {
+    label: 'post process render pass',
+    colorAttachments: [
+-      { loadOp: 'clear', storeOp: 'store' },
++      { loadOp: 'load', storeOp: 'store' },
+    ],
+  };
+
+-  let renderTarget;
+  let postProcessBindGroup;
++  let lastPostProcessTexture;
+
+  function setupPostProcess(texture) {
+-    if (renderTarget?.width === canvasTexture.width &amp;&amp;
+-        renderTarget?.height === canvasTexture.height) {
+-      return;
+-    }
+-
+-    renderTarget?.destroy();
+-    renderTarget = device.createTexture({
+-      size: canvasTexture,
+-      format: 'rgba8unorm',
+-      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.TEXTURE_BINDING,
+-    });
+-    const renderTargetView = renderTarget.createView();
+-    renderPassDescriptor.colorAttachments[0].view = renderTargetView;
+
++    if (!postProcessBindGroup || texture !== lastPostProcessTexture) {
++      lastPostProcessTexture = texture;
+*      postProcessBindGroup = device.createBindGroup({
+*        layout: postProcessPipeline.getBindGroupLayout(0),
+*        entries: [
+-          { binding: 0, resource: renderTargetView },
+-          { binding: 1, resource: postProcessSampler },
+-          { binding: 2, resource: postProcessUniformBuffer },
++          { binding: 0, resource: texture },
+*        ],
+*      });
++    }
+  }
+
+  function postProcess(encoder, srcTexture, dstTexture) {
+-    device.queue.writeBuffer(
+-      postProcessUniformBuffer,
+-      0,
+-      new Float32Array([
+-        settings.affectAmount,
+-        settings.bandMult,
+-        settings.cellMult,
+-        settings.cellBright,
+-      ]),
+-    );
+
+    postProcessRenderPassDescriptor.colorAttachments[0].view = dstTexture.createView();
+    const pass = encoder.beginRenderPass(postProcessRenderPassDescriptor);
+    pass.setPipeline(postProcessPipeline);
+    pass.setBindGroup(0, postProcessBindGroup);
+    pass.draw(3);
+    pass.end();
+  }
+</pre>
+<p>También necesitamos usar los objetos de post-procesamiento al renderizar.</p>
+<pre class="prettyprint showlinemods notranslate lang-js" translate="no">+  let selectedMeshes = [];
+
+  function render() {
+
+    ...
+
+-    const encoder = device.createCommandEncoder();
+-    const pass = encoder.beginRenderPass(renderPassDescriptor);
+-    pass.setPipeline(pipeline);
+
+    const aspect = canvas.clientWidth / canvas.clientHeight;
+    const projection = mat4.perspective(
+        degToRad(60), // fieldOfView,
+        aspect,
+        1,      // zNear
+        2000,   // zFar
+    );
+
+    // Get the camera's position from the matrix we computed
+    const cameraMatrix = mat4.identity();
+    mat4.translate(cameraMatrix, [120, 100, 0], cameraMatrix);
+    mat4.rotateY(cameraMatrix, settings.cameraRotation, cameraMatrix);
+    mat4.translate(cameraMatrix, [60, 0, 300], cameraMatrix);
+
+    // Make a view matrix from the camera's
+    const viewMatrix = mat4.inverse(cameraMatrix);
+
+    // combine the view and projection matrixes
+    const viewProjectionMatrix = mat4.multiply(projection, viewMatrix);
+
++    const encoder = device.createCommandEncoder();
++    {
++      const pass = encoder.beginRenderPass(renderPassDescriptor);
++      pass.setPipeline(pipeline);
+
+*      const ctx = { pass, viewProjectionMatrix };
+*      root.updateWorldMatrix();
+*      for (const mesh of meshes) {
+*        drawMesh(ctx, mesh);
+*      }
+*
+*      pass.end();
++    }
+
++    // dibujamos los objetos seleccionados en postTexture
++    {
++       if (!postTexture ||
++            postTexture.width !== canvasTexture.width)
++            postTexture.height !== canvasTexture.height) {
++         postTexture?.destroy();
++         postTexture = device.createTexture({
++          format: canvasTexture.format,
++          canvasTexture, // para el tamaño,
++          usage: GPUTextureUsage.RENDER_ATTACHMENT |
++                 GPUTextureUsage.TEXTURE_BINDING,
++         });
++       }
++      setupPostProcess(postTexture);
++
++      renderPassDescriptor.colorAttachments[0].view = postTexture.createView();
++      const pass = encoder.beginRenderPass(renderPassDescriptor);
++      pass.setPipeline(pipeline);
++
++      const ctx = { pass, viewProjectionMatrix };
++      for (const mesh of selectedMeshes) {
++        drawMesh(ctx, mesh);
++      }
++
++      pass.end();
++
++      // draw the outline based on the alpha in postTexture
++      // over the canvasTexture
++      postProcess(encoder, undefined, canvasTexture);
++    }
+
+    const commandBuffer = encoder.finish();
+    device.queue.submit([commandBuffer]);
+  }
+</pre>
+<p>El código anterior dibuja la escena original. Luego dibuja <code class="notranslate" translate="no">selectedMeshes</code> en <code class="notranslate" translate="no">postTexture</code>. Pasamos esa <code class="notranslate" translate="no">postTexture</code> al código de post-procesamiento para dibujar el contorno sobre la <code class="notranslate" translate="no">canvasTexture</code>.</p>
+<p>Dado que tenemos 2 fragmentos de código que recrean una textura si el tamaño de otra ha cambiado, podríamos simplificar un poco el código añadiendo una función de ayuda.</p>
+<pre class="prettyprint showlinemods notranslate lang-js" translate="no">+  function makeNewTextureIfSizeDifferent(texture, size, format, usage) {
++    if (!texture ||
++        texture.width !== size.width ||
++        texture.height !== size.height) {
++      texture?.destroy();
++      texture = device.createTexture({
++        format,
++        size,
++        usage,
++      });
++    }
++    return texture;
++  }
+
+...
+
+  function render() {
+    ...
+
+    // If we don't have a depth texture OR if its size is different
+    // from the canvasTexture, make a new depth texture
+-    if (!depthTexture ||
+-        depthTexture.width !== canvasTexture.width ||
+-        depthTexture.height !== canvasTexture.height) {
+-      if (depthTexture) {
+-        depthTexture.destroy();
+-      }
+-      depthTexture = device.createTexture({
+-        size: [canvasTexture.width, canvasTexture.height],
+-        format: 'depth24plus',
+-        usage: GPUTextureUsage.RENDER_ATTACHMENT,
+-      });
+-    }
++    depthTexture = makeNewTextureIfSizeDifferent(
++      depthTexture,
++      canvasTexture, // para el tamaño
++      'depth24plus',
++      GPUTextureUsage.RENDER_ATTACHMENT,
++    );
+
+...
+
+    // dibujamos los objetos seleccionados en postTexture
+    {
+-      if (!postTexture ||
+-           postTexture.width !== canvasTexture.width)
+-           postTexture.height !== canvasTexture.height) {
+-        postTexture?.destroy();
+-        postTexture = device.createTexture({
+-         format: canvasTexture.format,
+-         canvasTexture, // para el tamaño,
+-         usage: GPUTextureUsage.RENDER_ATTACHMENT |
+-                GPUTextureUsage.TEXTURE_BINDING,
+-        });
+-      }
++      postTexture = makeNewTextureIfSizeDifferent(
++        postTexture,
++        canvasTexture, // para el tamaño
++        canvasTexture.format,
++        GPUTextureUsage.RENDER_ATTACHMENT |
++        GPUTextureUsage.TEXTURE_BINDING,
++      );
+       setupPostProcess(postTexture);
+</pre>
+<p>Lo que queda es una forma de rellenar <code class="notranslate" translate="no">selectedMeshes</code>. Esto se complica un poco por el hecho de que hicimos todo a partir de cubos y, por defecto, ocultamos algunos de esos nodos. Tendremos en cuenta esa ocultación al establecer <code class="notranslate" translate="no">selectedMeshes</code> comprobando todos los hijos de un nodo en busca de más mallas (meshes).</p>
+<pre class="prettyprint showlinemods notranslate lang-js" translate="no">+  function meshUsesNode(mesh, node) {
++    if (!node) {
++      return false;
++    }
++    if (mesh.node === node) {
++      return true;
++    }
++    for (const child of node.children) {
++      if (meshUsesNode(mesh, child)) {
++        return true;
++      }
++    }
++    return false;
++  }
+
+  const kUnelected = '\u3000'; // full width space
+  const kSelected = '➡️';
+  const prefixRE = new RegExp(`^(?:${kUnelected}|${kSelected})`);
+
+  function setCurrentSceneGraphNode(node) {
+    trsUIHelper.setTRS(node.source);
+    trsFolder.name(`orientación: ${node.name}`);
+    trsFolder.updateDisplay();
+
+    // Mark which node is selected.
+    for (const b of nodeButtons) {
+      const name = b.button.getName().replace(prefixRE, '');
+      b.button.name(`${b.node === node ? kSelected : kUnelected}${name}`);
+    }
+
++    selectedMeshes = meshes.filter(mesh =&gt; meshUsesNode(mesh, node));
+
++    render();
+  }
+</pre>
+<p>Y con eso, los objetos seleccionados quedan resaltados.</p>
+<p></p><div class="webgpu_example_container">
+  <div><iframe class="webgpu_example" style=" " src="/webgpu/resources/editor.html?url=/webgpu/lessons/..%2Fwebgpu-highlighting.html"></iframe></div>
+  <a class="webgpu_center" href="/webgpu/lessons/../webgpu-highlighting.html" target="_blank">haz clic aquí para abrir el enlace en una ventana nueva</a>
+</div>
+
+<p></p>
+<p>Ahora que podemos resaltar una selección, hagamos posible <a href="webgpu-camera-controls.html">mover la cámara arrastrando el ratón</a> en lugar de tener que usar los botones de la interfaz de usuario.</p>
+<!-- keep this at the bottom of the article -->
+<link href="../webgpu-highlighting.css" rel="stylesheet">
+<script type="module" src="../webgpu-highlighting.js"></script>
 
     </div>
     <div class="lesson-sidebar">
         <select class="language">
     <option value="/webgpu/lessons/webgpu-highlighting.html">English
-    </option><option value="/webgpu/lessons/es/webgpu-highlighting.html" selected="">Spanish
+    </option><option value="/webgpu/lessons/es/webgpu-highlighting.html" selected="">Español
     </option><option value="/webgpu/lessons/ja/webgpu-highlighting.html">日本語
     </option><option value="/webgpu/lessons/ko/webgpu-highlighting.html">한국어
     </option><option value="/webgpu/lessons/ru/webgpu-highlighting.html">Русский
@@ -204,93 +665,94 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </option></select>
 
 
-        <ul>  <li>Lo básico</li>
+        <div id="toc">
+          <ul>  <li>Lo básico</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-fundamentals.html">Fundamentals</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-inter-stage-variables.html">Inter-stage Variables</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-fundamentals.html">Fundamentos</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-inter-stage-variables.html">Variables entre etapas</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-uniforms.html">Uniforms</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-storage-buffers.html">Storage Buffers</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-vertex-buffers.html">Vertex Buffers</a></li>
   <li>Texturas</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-textures.html">Textures</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-importing-textures.html">Loading Images</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-textures-external-video.html">Using Video</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-cube-maps.html">Cube Maps</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-storage-textures.html">Storage Textures</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-textures.html">Texturas</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-importing-textures.html">Carga de imágenes</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-textures-external-video.html">Uso de video</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-cube-maps.html">Cubemaps</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-storage-textures.html">Texturas de almacenamiento (Storage Textures)</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-multisampling.html">Multisampling / MSAA</a></li>
         </ul>
-<li><a href="/webgpu/lessons/es/webgpu-constants.html">Constants</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-memory-layout.html">Data Memory Layout</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-transparency.html">Transparency and Blending</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-constants.html">Constantes</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-memory-layout.html">Layout de memoria de datos</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-transparency.html">Transparencia y blending</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-bind-group-layouts.html">Bind Group Layouts</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-copying-data.html">Copying Data</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-limits-and-features.html">Optional Features and Limits</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-timing.html">Timing Performance</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-copying-data.html">Copiando Datos</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-limits-and-features.html">Características Opcionales y Límites</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-timing.html">Rendimiento y Timing</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-wgsl.html">WGSL</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-how-it-works.html">How It Works</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-compatibility-mode.html">Compatibility Mode</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-how-it-works.html">Cómo funciona</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-compatibility-mode.html">Modo de compatibilidad</a></li>
         </ul>
   <li>Matemáticas 3D</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-translation.html">Translation</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-rotation.html">Rotation</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-scale.html">Scale</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-matrix-math.html">Matrix Math</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-orthographic-projection.html">Orthographic Projection</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-perspective-projection.html">Perspective Projection</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-cameras.html">Cameras</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-matrix-stacks.html">Matrix Stacks</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-scene-graphs.html">Scene Graphs</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-translation.html">Traslación</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-rotation.html">Rotación</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-scale.html">Escalado</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-matrix-math.html">Matemáticas de matrices</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-orthographic-projection.html">Proyección ortográfica</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-perspective-projection.html">Proyección en perspectiva</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-cameras.html">Cámaras</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-matrix-stacks.html">Pilas de matrices</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-scene-graphs.html">Grafos de escena</a></li>
         </ul>
   <li>Iluminación</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-lighting-directional.html">Directional Lighting</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-lighting-point.html">Point Lighting</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-lighting-spot.html">Spot Lighting</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-lighting-directional.html">Iluminación direccional</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-lighting-point.html">Iluminación puntual</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-lighting-spot.html">Iluminación focal</a></li>
         </ul>
   <li>Técnicas</li>
         <ul>
             <li>2D</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-large-triangle-to-cover-clip-space.html">Large Clip Space Triangle</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-large-triangle-to-cover-clip-space.html">Gran Triángulo de Espacio de Recorte</a></li>
         </ul>
   <li>3D</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-environment-maps.html">Environment maps</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-environment-maps.html">Environment Maps</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-skybox.html">Skyboxes</a></li>
         </ul>
-  <li>Post Procesado</li>
+  <li>Post-procesado</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-post-processing.html">Basic CRT Effect</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-image-adjustments.html">Image Adjustments</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-1dlut.html">1D Lookup Table (LUT)</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-3dlut.html">3D Lookup Table (LUT)</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-post-processing.html">Efecto CRT básico</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-image-adjustments.html">Ajustes de imagen</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-1dlut.html">Tablas de búsqueda 1D (1D-LUT)</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-3dlut.html">Tabla de búsqueda 3D (3D-LUT)</a></li>
         </ul>
   <li>Editor</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-highlighting.html">Highlighting</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-camera-controls.html">Camera Controls</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-highlighting.html">Resaltado</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-camera-controls.html">Controles de cámara</a></li>
 <li><a href="/webgpu/lessons/es/webgpu-picking.html">Picking</a></li>
         </ul>
         </ul>
-  <li>Shaders de Cálculo</li>
+  <li>Shaders de Cómputo</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-compute-shaders.html">Compute Shader Basics</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-compute-shaders-histogram.html">Image Histogram</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-compute-shaders-histogram-part-2.html">Image Histogram Part 2</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-compute-shaders.html">Conceptos básicos de Compute Shader</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-compute-shaders-histogram.html">Histograma de Imagen</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-compute-shaders-histogram-part-2.html">Histograma de Imagen Parte 2</a></li>
         </ul>
   <li>Miscelánea</li>
         <ul>
-          <li><a href="/webgpu/lessons/es/webgpu-resizing-the-canvas.html">Resizing the Canvas</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-multiple-canvases.html">Multiple Canvases</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-points.html">Points</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-from-webgl.html">WebGPU from WebGL</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-optimization.html">Speed and Optimization</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-debugging.html">Debugging and Errors</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-resources.html">Resources / References</a></li>
-<li><a href="/webgpu/lessons/es/webgpu-wgsl-function-reference.html">WGSL Function Reference</a></li>
-<li><a href="/webgpu/lessons/resources/wgsl-offset-computer.html">WGSL Offset Computer</a></li>
+          <li><a href="/webgpu/lessons/es/webgpu-resizing-the-canvas.html">Redimensionando el canvas</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-multiple-canvases.html">Múltiples Canvas</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-points.html">Puntos</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-from-webgl.html">WebGPU desde WebGL</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-optimization.html">Velocidad y Optimización</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-debugging.html">Depuración y Errores</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-resources.html">Recursos / Referencias</a></li>
+<li><a href="/webgpu/lessons/es/webgpu-wgsl-function-reference.html">Referencia de Funciones WGSL</a></li>
+<li><a href="/webgpu/lessons/resources/wgsl-offset-computer.html">Calculadora de offsets de WGSL</a></li>
         </ul></ul>
 <ul>
   <li><a href="https://github.com/webgpu/webgpufundamentals">Github</a></li>
@@ -301,13 +763,53 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <li><a href="https://webgpureport.org">WebGPUReport.org</a></li>
   <li><a href="https://web3dsurvey.com/webgpu">Web3DSurvey.com</a></li>
 </ul>
+        </div>
+    </div>
+    <div class="lesson-comments">
+        
+    <div>¿Dudas? <a href="http://stackoverflow.com/questions/tagged/webgpu">Pregunta en StackOverflow</a>.</div>
+    <div>
+      ¿<a href="https://github.com/webgpu/webgpufundamentals/issues/new?assignees=&amp;labels=suggested+topic&amp;template=suggest-topic.md&amp;title=%5BSUGGESTION%5D">Sugerencia</a>?
+      ¿<a href="https://github.com/webgpu/webgpufundamentals/issues/new?assignees=&amp;labels=&amp;template=request.md&amp;title=">Solicitud</a>?
+      ¿<a href="https://github.com/webgpu/webgpufundamentals/issues/new?assignees=&amp;labels=bug+%2F+issue&amp;template=bug-issue-report.md&amp;title=">Problemas</a>?
+      ¿<a href="https://github.com/webgpu/webgpufundamentals/issues/new?assignees=&amp;labels=bug+%2F+issue&amp;template=bug-issue-report.md&amp;title=">Bug</a>?
+    </div>
+    
+
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+              this.page.url = `${window.location.origin}${window.location.pathname}`;
+              this.page.identifier = `WebGPU: Resaltado`;
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+                if (window.location.hostname.indexOf("webgpufundamentals.org") < 0) {
+                    return;
+                }
+                var d = document, s = d.createElement('script');
+                s.src = 'https://webgpufundamentals-org.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgpufundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 <script src="/3rdparty/jquery-3.3.1.slim.min.js"></script>
 <script src="/webgpu/lessons/resources/js/prettify.js"></script>
-<script src="/webgpu/lessons/resources/js/lesson.js"></script>
+<script src="/webgpu/lessons/resources/js/lesson.js" type="module"></script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-92BFT5PE4H"></script>
 <script>
