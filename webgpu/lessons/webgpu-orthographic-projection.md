@@ -979,6 +979,34 @@ Now that we have the data, we need to change our pipeline to use it.
   });
 ```
 
+We need to remove the old color data from our uniform.
+
+```js
+-  const uniformBufferSize = (4 + 16) * 4;
++  const uniformBufferSize = (16) * 4;
+  const uniformBuffer = device.createBuffer({
+    label: "uniforms",
+    size: uniformBufferSize,
+    usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+  });
+
+  const uniformValues = new Float32Array(uniformBufferSize / 4);
+
+  // offsets to the various uniform values in float32 indices
+-  const kColorOffset = 0;
+-  const kMatrixOffset = 4;
++  const kMatrixOffset = 0;
+
+-  const colorValue = uniformValues.subarray(kColorOffset, kColorOffset + 4);
+  const matrixValue = uniformValues.subarray(
+      kMatrixOffset,
+      kMatrixOffset + 16,
+  );
+
+-  // The color will not change so let's set it once at init time
+-  colorValue.set([Math.random(), Math.random(), Math.random(), 1]);
+```
+
 We no longer need to make an index buffer.
 
 ```js
